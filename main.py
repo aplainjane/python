@@ -1,7 +1,7 @@
-print("hello world!!!")
+"""print("hello world!!!")
 
 # 我是注释
-"""我也是注释"""
+""""""
 
 money = 50
 
@@ -239,3 +239,103 @@ print(set(char_list))
 
 # 正值表达式
 # 待学习
+
+import requests
+from bs4 import BeautifulSoup
+headers = {
+    "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.69"
+}
+for num in range(0,250,25):
+    response = requests.get(f"https://movie.douban.com/top250?start={num}", headers=headers)
+    html = response.text
+    soup = BeautifulSoup(html, "html.parser")
+    all_titles = soup.findAll("span", attrs={"class": "title"})
+    for title in all_titles:
+        stringtitle = title.string
+        if "/" not in stringtitle:
+            print(stringtitle)"""
+
+
+
+import numpy as lin
+
+
+
+lin.random.rand(2, 4)
+akk = lin.zeros((4, 2), dtype=lin.int32)
+# 全零初始化
+# 四行2列的数组
+
+print(akk.shape)
+
+print(akk)
+
+abb = akk.astype(float)
+
+gkd = lin.array([1, 2, 3])
+gkk = lin.array([3, 2, 1])
+
+gkd += gkk
+
+print(gkd)
+
+# 点乘
+print(lin.dot(gkd, gkk))
+
+# 对应位置相乘
+print(gkd @ gkk)
+
+lin.sqrt(gkd)
+
+lin.cos(akk)
+
+lin.sin(akk)
+
+lin.log(akk)
+
+lin.power(akk, 4)
+
+# 广播
+akk * 5
+
+# 不同尺寸相加会拓展至相同尺寸再相加减
+
+akk.max()
+akk.argmax()
+# 返回值 与 返回索引
+
+akk.sum()
+
+akk.mean()
+# 平均值
+
+lin.median(akk)
+# 中位数
+
+akk.var()
+# 方差
+
+akk.std()
+# 标准方差
+
+akk.sum(axis=1)
+# 返回第一个维度的和（vertical 0 horizontal 1
+
+print(akk[1][2])
+
+print(akk[(akk > 1) & akk != 0])
+
+akk[0, 0:2:1]
+# 只获取第一行两列数据
+# 第二个冒号后代表跨度，即每隔n个数取一个数还 可以取负数
+# 双冒号-1即对数组逆向输出 ::-1
+
+from PIL import Image
+im = Image.open('doge.jpg')
+
+im.show()
+
+print(im.shape)
+
+# 可以从下标访问像素点的RGB值
+# 可执行翻转 切片 提取色素 采样 卷积
